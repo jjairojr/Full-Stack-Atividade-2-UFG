@@ -44,4 +44,21 @@ public class HospedeCtrl {
         }
         return hospede;
     }
+
+    public Hospede update(Hospede hospede) {
+        try {
+            hospede = business.update(hospede);
+        } catch (HospedeException e) {
+            System.err.println(e.getMessage());
+        }
+        return hospede;
+    }
+
+    public void delete(Integer id) {
+		try {
+			business.delete(id);
+		} catch (HospedeException e) {
+			System.err.println(e.getMessage());
+		}
+	}
 }

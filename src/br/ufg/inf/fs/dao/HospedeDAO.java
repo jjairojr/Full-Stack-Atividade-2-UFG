@@ -100,4 +100,36 @@ public class HospedeDAO {
 
         return hospede;
     }
+
+    public Hospede update(Hospede hospede) throws HospedeException {
+		PreparedStatement st = null;
+		try {
+			st = conn.prepareStatement(" " + "UPDATE tb_hospede " + "SET nm_hospede = ?, dt_nascimento = ?, cpf = ? "
+					+ "WHERE id_hospede = ? ");
+
+			st.setString(1, hospede.getNmHospede());
+			st.setString(2, hospede.getDtNascimento().toString());
+			st.setInt(3, hospede.getCpf());
+			st.setInt(4, hospede.getIdHospede());
+			st.executeUpdate();
+		} catch (SQLException e) {
+			throw new HospedeException("Erro no banco de dados: " + e.getMessage());
+		} finally {
+			DB.closeStatment(st);
+		}
+		return hospede;
+	}
+
+	public void delete(Integer id) throws HospedeException {
+		PreparedStatement st = null;
+		try {
+			st = conn.prepareStatement("DELETE FROM tb_hospede WHERE id_hospede = ?");
+			st.setInt(1, id);
+			st.executeUpdate();
+		} catch (SQLException e) {
+			throw new HospedeException("Erro no banco de dados: " + e.getMessage());
+		} finally {
+			DB.closeStatment(st);
+		}
+	}
 }

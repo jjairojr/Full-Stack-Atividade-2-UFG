@@ -22,4 +22,11 @@ public class HospedeBusiness {
 	public Hospede insert(Hospede hospede) throws HospedeException {
 		return dao.insert(hospede);
 	}
+	public Hospede update(Hospede hospede) throws HospedeException {
+		return dao.update(hospede);
+	}
+
+	public void delete(Integer id) throws HospedeException {
+		dao.delete(id);
+	}
 }

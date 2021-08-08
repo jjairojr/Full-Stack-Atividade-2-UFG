@@ -61,15 +61,31 @@ public class App {
 		System.err.println(hospede);
 
 		System.out.println("Cadastar novo hóspede");
-		
-
 		Date date = new SimpleDateFormat("yyyy-MM-dd").parse("1977-11-25");
-		
 		java.sql.Date sqlDate = new java.sql.Date(date.getTime()); 
-
 		Hospede hospede1 = new Hospede(null, "Lucas Silva", sqlDate, 123456);
 		Hospede h1 = ctrl.insert(hospede1);
 		System.out.println(h1);
+
+		Hospede h2 = ctrl.findById(2);
+		System.out.println("UPDATE");
+		System.out.println("#ID original: " + h2.getIdHospede());
+		h2.setNmHospede(h2.getNmHospede() + " ALTERADO");
+		h2 = ctrl.update(h2);
+		System.out.println("#ID alterado: " + h2);
+
+		System.out.println("Lista de Hóspedes Cadastrados");
+		for(Hospede h: ctrl.findAll()) {
+			System.out.println(h);
+		}
+
+		System.out.println("Deletar #ID 2");
+		ctrl.delete(3);
+
+		System.out.println("Lista de Hóspedes Atualizada");
+		for(Hospede h: ctrl.findAll()) {
+			System.out.println(h);
+		}
 
 	}
 
