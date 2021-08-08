@@ -55,8 +55,8 @@ public class Hospede {
 
     @Override
     public String toString() {
-        return "Hospede [cpf=" + cpf + ", dtNascimento=" + dtNascimento + ", idHospede=" + idHospede + ", nmHospede="
-                + nmHospede + "]";
+        return "Hospede (CPF=" + cpf + ", Data de Nascimento=" + dtNascimento + ", id=" + idHospede
+                + ", Nome do Hospede=" + nmHospede + ")";
     }
 
 }
